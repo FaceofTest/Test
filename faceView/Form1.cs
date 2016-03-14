@@ -24,8 +24,8 @@ namespace faceView
             this.pnlLeftMenu.Controls.Clear();
             this.pnlLeftMenu.BackColor = Color.FromArgb(42, 57, 80); //左侧背景色
             this.pnlTitle.BackColor = Color.FromArgb(54, 72, 96); //标题栏颜色
-            this.pnlContent.BackColor = Color.FromArgb(238,241,248);
-            InitImg();
+            this.pnlContent.BackColor = Color.FromArgb(238,241,240);//右下侧背景色
+            InitImg();//加载图片
             bindItem();
             pictureBox1.Image = ImgClose;
             FormMove move = new FormMove();
@@ -36,7 +36,7 @@ namespace faceView
             ucIndex.Show();
 
         }
-        private void InitImg()
+        private void InitImg()//图片预处理
         {
             ImgDFaceCheck = Common.ConvertImage(Path.GetFullPath("Images/dfacecheck.png"));
             ImgDFaceCheck_Click = Common.ConvertImage(Path.GetFullPath("Images/dfacecheck_click.png"));
@@ -51,7 +51,7 @@ namespace faceView
             ImgClose = Common.ConvertImage(Path.GetFullPath("Images/button/关闭.png"));
             ImgClose_Click = Common.ConvertImage(Path.GetFullPath("Images/button/关闭-点击.png"));
         }
-        private Image ImgDFaceCheck { get; set; }
+        private Image ImgDFaceCheck { get; set; }//图片get set属性
         private Image ImgDFaceCheck_Click { get; set; }
         private Image ImgDFaceCompar { get; set; }
         private Image ImgDFaceCompar_Click { get; set; }
@@ -72,11 +72,13 @@ namespace faceView
             itemface.EnterImage = ImgFaceCheck;
             itemface.LeaveImage = ImgFaceCheck_Click;
             itemface.Click += itemface_Click;
+
             UcMenuItem itemCom = new UcMenuItem();
             itemCom.Name = "facecompar";
             itemCom.EnterImage = ImgFaceCompar;
             itemCom.LeaveImage = ImgFaceCompar_Click;
             itemCom.Click += itemface_Click;
+
             UcMenuItem itemDynamic = new UcMenuItem();
             itemDynamic.Name = "facedynamic";
             itemDynamic.EnterImage = ImgDFaceCheck;
@@ -94,7 +96,7 @@ namespace faceView
             itemvideo.EnterImage = ImgOfflineHigh;
             itemvideo.LeaveImage = ImgOfflineHigh_Click;
             itemvideo.Click += itemface_Click;
-            this.pnlLeftMenu.Controls.Add(itemface);
+            this.pnlLeftMenu.Controls.Add(itemface);//往不同的容器中添加图片
             this.pnlLeftMenu.Controls.Add(itemCom);
             this.pnlLeftMenu.Controls.Add(itemDynamic);
             this.pnlLeftMenu.Controls.Add(itemDynamicCom);
